@@ -1,10 +1,11 @@
+import { sample } from 'lodash-es'
 import React from 'react'
 
 type InputProps = {
     type: string
     name: string
     label: string
-    onChange: any
+    onChange: any,
 }
 
 export const Input = ({type, name, label, onChange}: InputProps) => {

@@ -2,14 +2,26 @@ import React, { useState } from 'react'
 import Card from '../../components/Card';
 import {Input} from '../../components/form/Input'
 import {SubmitBtn} from '../../components/form/Button'
-import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import {AuthRegister} from '../../redux/actions/AuthActions';
+import authReducer from 'redux/reducers/AuthReducer';
 
 const Register = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [passwordConfirm, setPasswordConfirm] = useState('');
+    const dispatch = useDispatch();
 
+    const registerState = useSelector((state: any) => state.auth);
+    const errors = registerState.errors ?? null;
+    const errorsJSX = Object.entries(errors).map(([key,value])=>{
+        return (
+            <div>{key} : {value.toString()}</div>
+        );
+    })
+
+    // Map Errors
     const handleSubmit = (e) => {
         const data = {
             name,
@@ -17,7 +29,9 @@ const Register = () => {
             password,
             passwordConfirm
         }
-        axios.post('/api/register', data)
+        dispatch(AuthRegister(data))
+
+        console.log(errorsJSX);
     }
 
     return (
@@ -31,6 +45,9 @@ const Register = () => {
                     <div>
                         <SubmitBtn label="Submit" cb={handleSubmit}/>
                     </div>
+                </div>
+                <div className="text-red-600 text-sm mt-4">
+                    {errors ? errorsJSX : null}
                 </div>
             </Card>
         </div>
