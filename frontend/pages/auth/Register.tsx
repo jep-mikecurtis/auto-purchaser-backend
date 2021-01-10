@@ -6,21 +6,26 @@ import { useDispatch, useSelector } from 'react-redux';
 import {AuthRegister} from '../../redux/actions/AuthActions';
 
 const Register = () => {
+    // SETUP STATE
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [passwordConfirm, setPasswordConfirm] = useState('');
     const dispatch = useDispatch();
 
+    // Get The Register State & Check For Errors
     const registerState = useSelector((state: any) => state.auth);
     const errors = registerState.errors ?? null;
+
+    // Map Over Errors Returning JSX
     const errorsJSX = Object.entries(errors).map(([key,value])=>{
         return (
             <div>{value.toString()}</div>
         );
     })
 
-    // Map Errors
+    // Handle Register Submit
+    // ACTION AuthRegister / AUTH_REGISTER
     const handleSubmit = (e) => {
         const data = {
             name,
