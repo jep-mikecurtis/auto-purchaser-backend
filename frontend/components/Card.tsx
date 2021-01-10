@@ -13,7 +13,7 @@ const Card: React.FunctionComponent<CardProps> = ({header, children}: CardProps)
                 {header}
             </div>
             {/* Body */}
-            <div className="p-4 bg-gray-300 ">
+            <div className="p-4 bg-gray-300">
                 {children}
             </div>
         </div>

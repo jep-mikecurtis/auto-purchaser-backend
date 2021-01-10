@@ -12,6 +12,7 @@ export const AuthRegister = (data: object) => async (dispatch: Dispatch) => {
                 payload: res.data.data
             })
             history.replace('/dashboard')
+            localStorage.setItem('auth', JSON.stringify(res.data.data));
         } else {
             dispatch({
                 type: AUTH_REGISTER_FAIL,

@@ -6,8 +6,17 @@ interface DefaultStateRegister {
 }
 
 const DefaultStateRegister = {
-    success: true,
+    success: false,
     auth: {}
+}
+
+// Check for auth user in localstorage
+const auth = JSON.parse(localStorage.getItem('auth'));
+
+// Update Defualt State With Auth User
+if(auth) {
+    DefaultStateRegister.success = true
+    DefaultStateRegister.auth = auth
 }
 
 const authReducer = (state: DefaultStateRegister = DefaultStateRegister, action: any) : DefaultStateRegister => {
