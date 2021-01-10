@@ -30,6 +30,18 @@ class AuthController extends Controller
         return ['success' => true, 'data' => $user];
     }
 
+    public function login(Request $request)
+    {
+         $validator = Validator::make($request->all(), [
+             'email'    => 'required',
+             'password' => 'required'
+         ]);
+
+         if($validator->fails()) {
+             return ['success' => false, 'data' => null, 'errors' => $validator->errors()];
+         }
+    }
+
     public function logout(Request $request)
     {
         $user = User::where('email', $request->email)->first();
