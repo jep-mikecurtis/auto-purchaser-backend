@@ -1,4 +1,4 @@
-import { AUTH_REGISTER, AUTH_REGISTER_FAIL, AUTH_LOGOUT } from '../actions/AuthActionsTypes';
+import { AUTH_REGISTER, AUTH_REGISTER_FAIL, AUTH_LOGOUT, AUTH_LOGIN } from '../actions/AuthActionsTypes';
 interface DefaultStateRegister {
     success: boolean,
     errors?: object,
@@ -36,6 +36,11 @@ const authReducer = (state: DefaultStateRegister = DefaultStateRegister, action:
             return {
                 success: false,
                 user: {}
+            }
+        case AUTH_LOGIN:
+            return {
+                success: true,
+                user: action.payload
             }
         default:
             return state

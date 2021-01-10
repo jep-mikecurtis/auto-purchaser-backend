@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 class AuthController extends Controller
@@ -19,7 +20,7 @@ class AuthController extends Controller
             'passwordConfirm'   => 'same:password'
         ]);
 
-        if($validator->fails()) {
+        if ($validator->fails()) {
             return ['success' => false, 'data' => null, 'errors' => $validator->errors()];
         }
 
@@ -32,21 +33,33 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-         $validator = Validator::make($request->all(), [
-             'email'    => 'required',
-             'password' => 'required'
-         ]);
+        $validator = Validator::make($request->all(), [
+            'email'    => 'required',
+            'password' => 'required'
+        ]);
 
-         if($validator->fails()) {
-             return ['success' => false, 'data' => null, 'errors' => $validator->errors()];
-         }
+        if ($validator->fails()) {
+            return ['success' => false, 'data' => null, 'errors' => $validator->errors()];
+        }
+
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+            $user       = User::where('email', $request->email)->first();
+            $api_token  = Str::random(60);
+            $user->update(['api_token' => $api_token]);
+
+            return ['success' => true, 'data' => $user];
+        } else {
+            return ['success' => false, 'errors' => ['error' => ['Please make sure your password or email is correct']]];
+        }
     }
 
     public function logout(Request $request)
     {
         $user = User::where('email', $request->email)->first();
 
-        if(!$user) {
+        if (!$user) {
             return ['success' => false];
         }
 

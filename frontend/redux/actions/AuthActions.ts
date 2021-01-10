@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {Dispatch} from 'redux';
-import {AUTH_REGISTER, AUTH_REGISTER_FAIL, AUTH_LOGOUT} from './AuthActionsTypes';
+import {AUTH_REGISTER, AUTH_REGISTER_FAIL, AUTH_LOGOUT, AUTH_LOGIN} from './AuthActionsTypes';
 import {history} from '../../store';
 import store from '../../store';
 
@@ -24,8 +24,9 @@ export const AuthRegister = (data: RegisterType) => async (dispatch: Dispatch) =
                 type: AUTH_REGISTER,
                 payload: res.data.data
             })
-            history.replace('/dashboard')
+
             localStorage.setItem('auth', JSON.stringify(res.data.data));
+            history.replace('/dashboard')
         } else {
             dispatch({
                 type: AUTH_REGISTER_FAIL,
@@ -43,7 +44,13 @@ export const AuthLogin = (data: LoginType) => async (dispatch: Dispatch) => {
         const res = (await axios.post('/api/login', data)).data;
 
         if(res.success) {
+            dispatch({
+                type: AUTH_LOGIN,
+                payload: res.data
+            })
 
+            localStorage.setItem('auth', JSON.stringify(res.data));
+            history.replace('/dashboard')
         } else {
             dispatch({
                 type: AUTH_REGISTER_FAIL,
@@ -67,6 +74,7 @@ export const AuthLogout = () => async (dispatch: Dispatch) => {
                     payload: {}
                 })
                 localStorage.removeItem('auth');
+                history.replace('/')
             }
         }
     } catch(err) {
