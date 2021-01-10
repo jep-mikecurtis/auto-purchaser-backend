@@ -1,9 +1,4 @@
-import { AUTH_REGISTER, AUTH_REGISTER_FAIL, AUTH_LOGOUT, AUTH_LOGIN } from '../actions/AuthActionsTypes';
-interface DefaultStateRegister {
-    success: boolean,
-    errors?: object,
-    user: object
-}
+import { AUTH_REGISTER, AUTH_REGISTER_FAIL, AUTH_LOGOUT, AUTH_LOGIN, DefaultStateRegister } from '../actions/AuthActionsTypes';
 
 const DefaultStateRegister = {
     success: false,
