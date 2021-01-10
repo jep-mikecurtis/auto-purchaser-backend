@@ -1,12 +1,17 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+
+import {useDispatch} from 'react-redux';
+import {AuthLogout} from '../redux/actions/AuthActions';
 
 const Layout = ({children}) => {
     const auth  = useSelector((state: any) => state.auth);
+    const dispatch = useDispatch();
 
     const logout = () => {
         console.log('hit');
+        dispatch(AuthLogout());
     }
 
     return (
