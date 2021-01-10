@@ -4,6 +4,11 @@ import { Link } from 'react-router-dom'
 
 const Layout = ({children}) => {
     const auth  = useSelector((state: any) => state.auth);
+
+    const logout () => {
+        console.log('hit');
+    }
+
     return (
         <div className="bg-gray-800 h-screen text-gray-100 flex flex-col">
             <nav className="py-2">
@@ -18,6 +23,9 @@ const Layout = ({children}) => {
                         <ul className="flex space-x-4">
                             <li>
                                 <Link to="/dashboard" className="text-gray-100 hover:text-gray-300">Dashboard</Link>
+                            </li>
+                            <li>
+                                <button onClick={logout} className="text-gray-100 hover:text-gray-300">Logout</button>
                             </li>
                         </ul> :
                         // Not A User

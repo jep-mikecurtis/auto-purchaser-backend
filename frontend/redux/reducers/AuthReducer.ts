@@ -2,12 +2,12 @@ import { AUTH_REGISTER, AUTH_REGISTER_FAIL } from '../actions/AuthActionsTypes';
 interface DefaultStateRegister {
     success: boolean,
     errors?: object,
-    auth: object
+    user: object
 }
 
 const DefaultStateRegister = {
     success: false,
-    auth: {}
+    user: {}
 }
 
 // Check for auth user in localstorage
@@ -16,7 +16,7 @@ const auth = JSON.parse(localStorage.getItem('auth'));
 // Update Defualt State With Auth User
 if(auth) {
     DefaultStateRegister.success = true
-    DefaultStateRegister.auth = auth
+    DefaultStateRegister.user = auth
 }
 
 const authReducer = (state: DefaultStateRegister = DefaultStateRegister, action: any) : DefaultStateRegister => {
@@ -24,13 +24,13 @@ const authReducer = (state: DefaultStateRegister = DefaultStateRegister, action:
         case AUTH_REGISTER:
             return {
                 success: true,
-                auth: action.payload
+                user: action.payload
             };
         case AUTH_REGISTER_FAIL:
             return {
                 success: false,
                 errors: action.payload,
-                auth: {}
+                user: {}
             };
         default:
             return state

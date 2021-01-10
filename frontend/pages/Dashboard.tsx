@@ -3,8 +3,7 @@ import {useSelector} from 'react-redux'
 
 const Dashboard = () => {
     const auth = useSelector((state: any) => state.auth);
-
-    const user = auth.auth
+    const user = auth.user
     return (
         <div className="container mx-auto py-10">
             <h1>
