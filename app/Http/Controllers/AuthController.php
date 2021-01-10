@@ -33,6 +33,11 @@ class AuthController extends Controller
     public function logout(Request $request)
     {
         $user = User::where('email', $request->email)->first();
+
+        if(!$user) {
+            return ['success' => false];
+        }
+
         $user->update(['api_token' => '']);
         return ['success' => true];
     }
