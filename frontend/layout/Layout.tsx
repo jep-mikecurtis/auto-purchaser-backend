@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 const Layout = ({children}) => {
     const auth  = useSelector((state: any) => state.auth);
 
-    const logout () => {
+    const logout = () => {
         console.log('hit');
     }
 
