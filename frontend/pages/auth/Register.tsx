@@ -4,7 +4,6 @@ import {Input} from '../../components/form/Input'
 import {SubmitBtn} from '../../components/form/Button'
 import { useDispatch, useSelector } from 'react-redux';
 import {AuthRegister} from '../../redux/actions/AuthActions';
-import authReducer from 'redux/reducers/AuthReducer';
 
 const Register = () => {
     const [name, setName] = useState('');
@@ -17,7 +16,7 @@ const Register = () => {
     const errors = registerState.errors ?? null;
     const errorsJSX = Object.entries(errors).map(([key,value])=>{
         return (
-            <div>{key} : {value.toString()}</div>
+            <div>{value.toString()}</div>
         );
     })
 
@@ -30,13 +29,16 @@ const Register = () => {
             passwordConfirm
         }
         dispatch(AuthRegister(data))
-
-        console.log(errorsJSX);
     }
 
     return (
         <div className="container mx-auto py-4">
             <Card header="Register">
+                {errors ?
+                    <div className="text-red-600 text-sm mb-4">
+                        {errorsJSX}
+                    </div>
+                : null}
                 <div className="flex flex-col space-y-4">
                     <Input type="text" name="name" label="Name" onChange={(e) => setName(e.target.value)}/>
                     <Input type="email" name="email" label="Email" onChange={(e) => setEmail(e.target.value)}/>
@@ -45,9 +47,6 @@ const Register = () => {
                     <div>
                         <SubmitBtn label="Submit" cb={handleSubmit}/>
                     </div>
-                </div>
-                <div className="text-red-600 text-sm mt-4">
-                    {errors ? errorsJSX : null}
                 </div>
             </Card>
         </div>
