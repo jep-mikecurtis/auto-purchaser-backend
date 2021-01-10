@@ -17,13 +17,6 @@ const Register = () => {
     const registerState = useSelector((state: any) => state.auth);
     const errors = registerState.errors ?? null;
 
-    // Map Over Errors Returning JSX
-    const errorsJSX = Object.entries(errors).map(([key,value])=>{
-        return (
-            <div>{value.toString()}</div>
-        );
-    })
-
     // Handle Register Submit
     // ACTION AuthRegister / AUTH_REGISTER
     const handleSubmit = (e) => {
@@ -39,11 +32,20 @@ const Register = () => {
     return (
         <div className="container mx-auto py-4">
             <Card header="Register">
+                {/* ERRORS */}
                 {errors ?
                     <div className="text-red-600 text-sm mb-4">
-                        {errorsJSX}
+                        {
+                            Object.entries(errors).map(([key, value])=>{
+                                return (
+                                    <div>{value.toString()}</div>
+                                );
+                            })
+                        }
                     </div>
                 : null}
+
+                {/* FORM */}
                 <div className="flex flex-col space-y-4">
                     <Input type="text" name="name" label="Name" onChange={(e) => setName(e.target.value)}/>
                     <Input type="email" name="email" label="Email" onChange={(e) => setEmail(e.target.value)}/>
