@@ -31,31 +31,33 @@ const Register = () => {
 
     return (
         <div className="container mx-auto py-4">
-            <Card header="Register">
-                {/* ERRORS */}
-                {errors ?
-                    <div className="text-red-600 text-sm mb-4">
-                        {
-                            Object.entries(errors).map(([key, value])=>{
-                                return (
-                                    <div>{value.toString()}</div>
-                                );
-                            })
-                        }
-                    </div>
-                : null}
+            <div className="flex justify-center mt-20">
+                <Card header="Register">
+                    {/* ERRORS */}
+                    {errors ?
+                        <div className="text-red-600 text-sm mb-4">
+                            {
+                                Object.entries(errors).map(([key, value])=>{
+                                    return (
+                                        <div key={key}>{value.toString()}</div>
+                                    );
+                                })
+                            }
+                        </div>
+                    : null}
 
-                {/* FORM */}
-                <div className="flex flex-col space-y-4">
-                    <Input type="text" name="name" label="Name" onChange={(e) => setName(e.target.value)}/>
-                    <Input type="email" name="email" label="Email" onChange={(e) => setEmail(e.target.value)}/>
-                    <Input type="password" name="password" label="Password" onChange={(e) => setPassword(e.target.value)}/>
-                    <Input type="password" name="password_confirm" label="Confirm Password" onChange={(e) => setPasswordConfirm(e.target.value)}/>
-                    <div>
-                        <SubmitBtn label="Submit" cb={handleSubmit}/>
+                    {/* FORM */}
+                    <div className="flex flex-col space-y-4">
+                        <Input type="text" name="name" label="Name" onChange={(e) => setName(e.target.value)}/>
+                        <Input type="email" name="email" label="Email" onChange={(e) => setEmail(e.target.value)}/>
+                        <Input type="password" name="password" label="Password" onChange={(e) => setPassword(e.target.value)}/>
+                        <Input type="password" name="password_confirm" label="Confirm Password" onChange={(e) => setPasswordConfirm(e.target.value)}/>
+                        <div>
+                            <SubmitBtn label="Submit" cb={handleSubmit}/>
+                        </div>
                     </div>
-                </div>
-            </Card>
+                </Card>
+            </div>
         </div>
     )
 }

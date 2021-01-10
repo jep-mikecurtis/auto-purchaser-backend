@@ -9,6 +9,7 @@ import Layout from './layout/Layout'
 
 // Pages
 import Home from './pages/Home'
+import Dashboard from './pages/Dashboard'
 import Login from './pages/auth/Login'
 import Register from './pages/auth/Register'
 
@@ -18,8 +19,9 @@ export const RouterComponent = hot(module)(() => (
         <Layout>
             <Switch>
                 <Route path='/' exact component={Home} />
-                <Route path='/login' exact component={Login} />
-                <Route path='/register' exact component={Register} />
+                <Route path='/dashboard' component={Dashboard} />
+                <Route path='/login' component={Login} />
+                <Route path='/register' component={Register} />
             </Switch>
         </Layout>
      </ConnectedRouter>
