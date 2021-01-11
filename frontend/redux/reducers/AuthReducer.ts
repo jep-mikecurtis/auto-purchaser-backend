@@ -1,4 +1,4 @@
-import { AUTH_REGISTER, AUTH_REGISTER_FAIL, AUTH_LOGOUT, AUTH_LOGIN, DefaultStateRegister } from '../actions/AuthActionsTypes';
+import { AUTH_REGISTER, AUTH_REGISTER_FAIL, AUTH_LOGOUT, AUTH_LOGIN, DefaultStateRegister, AuthDispatchTypes } from '../actions/AuthActionsTypes';
 
 const DefaultStateRegister = {
     success: false,
@@ -14,7 +14,7 @@ if(auth) {
     DefaultStateRegister.user = auth
 }
 
-const authReducer = (state: DefaultStateRegister = DefaultStateRegister, action: any) : DefaultStateRegister => {
+const authReducer = (state: DefaultStateRegister = DefaultStateRegister, action: AuthDispatchTypes) : DefaultStateRegister => {
     switch(action.type) {
         case AUTH_REGISTER:
             return {

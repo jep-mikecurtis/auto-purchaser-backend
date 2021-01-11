@@ -17,33 +17,33 @@ export interface DefaultStateRegister {
   user: object;
 }
 
-//  Register Interface
-export interface AUTH_REGISTER {
+//  DISPATCH TYPES
+export interface AUTH_REGISTER_DISPATCH {
   type: typeof AUTH_REGISTER;
   payload: DefaultStateRegister;
 }
 
-export interface AUTH_REGISTER_FAIL {
+export interface AUTH_REGISTER_FAIL_DISPATCH {
   type: typeof AUTH_REGISTER_FAIL;
   payload: DefaultStateRegister;
 }
 
-export interface AUTH_REGISTER_SUCCESS {
+export interface AUTH_REGISTER_SUCCESS_DISPATCH {
   type: typeof AUTH_REGISTER_SUCCESS;
 }
 
-export interface AUTH_LOGOUT {
+export interface AUTH_LOGOUT_DISPATCH {
     type: typeof AUTH_LOGOUT;
     payload: DefaultStateRegister;
 }
 // Login Interface
-export interface AUTH_LOGIN {
+export interface AUTH_LOGIN_DISPATCH {
     type: typeof AUTH_LOGIN;
     payload: DefaultStateRegister;
 }
 
 export type AuthDispatchTypes =
-  | AUTH_REGISTER
-  | AUTH_REGISTER_FAIL
-  | AUTH_LOGIN
-  | AUTH_LOGOUT;
+  | AUTH_REGISTER_DISPATCH
+  | AUTH_REGISTER_FAIL_DISPATCH
+  | AUTH_LOGIN_DISPATCH
+  | AUTH_LOGOUT_DISPATCH;
