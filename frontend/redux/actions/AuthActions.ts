@@ -3,6 +3,7 @@ import {Dispatch} from 'redux';
 import {AUTH_REGISTER, AUTH_REGISTER_FAIL, AUTH_LOGOUT, AUTH_LOGIN} from './AuthActionsTypes';
 import {history} from '../../store';
 import store from '../../store';
+import {SERVER_ERROR} from './ServerActionsTypes';
 
 type RegisterType = {
     name: string
@@ -35,7 +36,10 @@ export const AuthRegister = (data: RegisterType) => async (dispatch: Dispatch) =
         }
 
     } catch(err) {
-        console.log(err);
+        dispatch({
+            type: SERVER_ERROR,
+            payload: err
+        })
     }
 }
 
@@ -58,7 +62,10 @@ export const AuthLogin = (data: LoginType) => async (dispatch: Dispatch) => {
             })
         }
     } catch(err) {
-        console.log(err);
+        dispatch({
+            type: SERVER_ERROR,
+            payload: err
+        })
     }
 }
 
@@ -78,6 +85,9 @@ export const AuthLogout = () => async (dispatch: Dispatch) => {
             }
         }
     } catch(err) {
-        console.log(err);
+        dispatch({
+            type: SERVER_ERROR,
+            payload: err
+        })
     }
 }
