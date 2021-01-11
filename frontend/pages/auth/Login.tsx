@@ -22,12 +22,17 @@ const Login = () => {
             email,
             password
         }
-
         dispatch(AuthLogin(data));
     }
 
+    const onKeyDownHandler = e => {
+        if (e.keyCode === 13) {
+          handleSubmit();
+        }
+    };
+
     return (
-        <div className="container mx-auto py-4">
+        <div className="container mx-auto py-4" onKeyDown={onKeyDownHandler}>
             <div className="flex justify-center mt-20">
                 <Card header="Login">
                     {/* ERRORS */}
