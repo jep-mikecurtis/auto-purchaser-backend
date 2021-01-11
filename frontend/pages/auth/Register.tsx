@@ -30,7 +30,7 @@ const Register = () => {
     }
 
     const onKeyDownHandler = (e: React.KeyboardEvent) => {
-        if (e.keyCode === 13) {
+        if (e.key === 'Enter') {
           handleSubmit();
         }
     };
