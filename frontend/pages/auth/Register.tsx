@@ -29,7 +29,7 @@ const Register = () => {
         dispatch(AuthRegister(data))
     }
 
-    const onKeyDownHandler = e => {
+    const onKeyDownHandler = (e: React.KeyboardEvent) => {
         if (e.keyCode === 13) {
           handleSubmit();
         }
