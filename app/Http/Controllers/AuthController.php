@@ -63,7 +63,7 @@ class AuthController extends Controller
             return ['success' => false];
         }
 
-        $user->update(['api_token' => '']);
+        $user->update(['api_token' => null]);
         return ['success' => true];
     }
 }
