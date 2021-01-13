@@ -7,13 +7,13 @@ type CardProps = {
 
 const Card: React.FunctionComponent<CardProps> = ({header, children}: CardProps) => {
     return (
-        <div className="w-full max-w-2xl rounded overflow-hidden">
+        <div className="w-full max-w-2xl rounded overflow-hidden bg-gray-800">
             {/* Header */}
-            <div className="bg-gray-800 text-center py-2 text-xl">
+            <div className="text-center py-2 text-xl">
                 {header}
             </div>
             {/* Body */}
-            <div className="p-4 bg-gray-300">
+            <div className="p-4 bg-gray-700">
                 {children}
             </div>
         </div>

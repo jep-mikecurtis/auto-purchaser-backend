@@ -10,8 +10,24 @@ export const AUTH_LOGOUT = "AUTH_LOGOUT";
 export const AUTH_LOGIN = "AUTH_LOGIN";
 export const AUTH_LOGIN_FAIL = "AUTH_LOGIN_FAIL";
 
+// Register Type
+// * This will be sent to backend api
+export type RegisterType = {
+  name: string
+  email: string
+  password: string
+  passwordConfirm: string
+}
+
+// Login Type
+// * This will be sent to backend api
+export type LoginType = {
+  email: string
+  password: string
+}
+
 // Default State
-export interface DefaultStateRegister {
+export interface DefaultStateRegisterType {
   success: boolean;
   errors?: object;
   user: object;
@@ -20,12 +36,12 @@ export interface DefaultStateRegister {
 //  DISPATCH TYPES
 export interface AUTH_REGISTER_DISPATCH {
   type: typeof AUTH_REGISTER;
-  payload: DefaultStateRegister;
+  payload: DefaultStateRegisterType;
 }
 
 export interface AUTH_REGISTER_FAIL_DISPATCH {
   type: typeof AUTH_REGISTER_FAIL;
-  payload: DefaultStateRegister;
+  payload: DefaultStateRegisterType;
 }
 
 export interface AUTH_REGISTER_SUCCESS_DISPATCH {
@@ -34,12 +50,12 @@ export interface AUTH_REGISTER_SUCCESS_DISPATCH {
 
 export interface AUTH_LOGOUT_DISPATCH {
     type: typeof AUTH_LOGOUT;
-    payload: DefaultStateRegister;
+    payload: DefaultStateRegisterType;
 }
 // Login Interface
 export interface AUTH_LOGIN_DISPATCH {
     type: typeof AUTH_LOGIN;
-    payload: DefaultStateRegister;
+    payload: DefaultStateRegisterType;
 }
 
 export type AuthDispatchTypes =

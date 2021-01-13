@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { AuthLogout } from "../redux/actions/AuthActions";
 
-const Layout = ({ children }) => {
+const Layout: React.FC = ({ children }) => {
   const auth = useSelector((state: any) => state.auth);
   const dispatch = useDispatch();
 
@@ -52,14 +52,6 @@ const Layout = ({ children }) => {
                   Login
                 </Link>
               </li>
-              <li>
-                <Link
-                  to="/register"
-                  className="text-gray-100 hover:text-gray-300"
-                >
-                  Register
-                </Link>
-              </li>
             </ul>
           )}
         </div>
@@ -76,7 +68,7 @@ const Layout = ({ children }) => {
               backgroundSize: "cover"
             }}
           >
-            <div className="w-full max-w-2xl relative flex flex-col mt-52">
+            <div className="w-full max-w-2xl relative flex flex-col mt-40">
               {children}
             </div>
           </div>

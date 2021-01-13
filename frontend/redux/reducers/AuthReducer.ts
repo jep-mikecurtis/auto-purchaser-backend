@@ -1,12 +1,12 @@
-import { AUTH_REGISTER, AUTH_REGISTER_FAIL, AUTH_LOGOUT, AUTH_LOGIN, DefaultStateRegister, AuthDispatchTypes } from '../actions/AuthActionsTypes';
+import { AUTH_REGISTER, AUTH_REGISTER_FAIL, AUTH_LOGOUT, AUTH_LOGIN, DefaultStateRegisterType, AuthDispatchTypes } from '../actions/AuthActionsTypes';
 
 const DefaultStateRegister = {
     success: false,
     user: {}
 }
 
-// Check for auth user in localstorage
-const auth = JSON.parse(localStorage.getItem('auth'));
+// // Check for auth user in localstorage
+const auth = JSON.parse(localStorage.getItem('auth') || "{}");
 
 // Update Defualt State With Auth User
 if(auth) {
@@ -14,7 +14,7 @@ if(auth) {
     DefaultStateRegister.user = auth
 }
 
-const authReducer = (state: DefaultStateRegister = DefaultStateRegister, action: AuthDispatchTypes) : DefaultStateRegister => {
+const authReducer = (state: DefaultStateRegisterType = DefaultStateRegister, action: AuthDispatchTypes) : DefaultStateRegisterType => {
     switch(action.type) {
         case AUTH_REGISTER:
             return {

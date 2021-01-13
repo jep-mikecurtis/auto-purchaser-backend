@@ -1,7 +1,7 @@
 import {ServerDefaultState, ServerDispatchType, SERVER_ERROR} from '../actions/ServerActionsTypes'
 
 const DefualtState = {
-    error: null
+    error: ''
 }
 
 const serverReducer = (state: ServerDefaultState = DefualtState, action: ServerDispatchType) => {

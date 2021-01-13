@@ -9,8 +9,9 @@
     <title>{{ config('app.name') }}</title>
 
     @include('components.loader-css')
-    
+
     <link href="https://fonts.googleapis.com/css?family=Merriweather|Lato" rel="stylesheet" />
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     @env('production')
     <link rel="stylesheet" type="text/css" href="dist/styles.css" />
     @endenv

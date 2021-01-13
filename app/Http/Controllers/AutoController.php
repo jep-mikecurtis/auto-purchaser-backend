@@ -22,9 +22,9 @@ class AutoController extends Controller
 
         if($validator) {
             $auto = $request->all();
-            $auto['purchase_price']     = intval(preg_replace("/[^0-9.]/", "", "$123.099"));
-            $auto['yearly_income']      = intval(preg_replace("/[^0-9.]/", "", "$123.099"));
-            $auto['credit_score']       = intval(preg_replace("/[^0-9.]/", "", "$123.099"));
+            $auto['purchase_price']     = intval(preg_replace("/[^0-9.]/", "", $request->purchase_price));
+            $auto['yearly_income']      = intval(preg_replace("/[^0-9.]/", "", $request->yearly_income));
+            $auto['credit_score']       = intval(preg_replace("/[^0-9.]/", "", $request->credit_score));
             $auto = Auto::create($auto);
             $auto['message'] = 'You have been approved!';
             return ['success' => true, 'data' => $auto];

@@ -1,25 +1,15 @@
 import axios from 'axios';
 import {Dispatch} from 'redux';
-import {AUTH_REGISTER, AUTH_REGISTER_FAIL, AUTH_LOGOUT, AUTH_LOGIN} from './AuthActionsTypes';
+import {AUTH_REGISTER, AUTH_REGISTER_FAIL, AUTH_LOGOUT, AUTH_LOGIN, RegisterType, LoginType} from './AuthActionsTypes';
 import {history} from '../../store';
 import store from '../../store';
 import {SERVER_ERROR} from './ServerActionsTypes';
+const url = ''
 
-type RegisterType = {
-    name: string
-    email: string
-    password: string
-    passwordConfirm: string
-}
-
-type LoginType = {
-    email: string
-    password: string
-}
 
 export const AuthRegister = (data: RegisterType) => async (dispatch: Dispatch) => {
     try {
-        const res = await axios.post('/api/register', data);
+        const res = await axios.post(url + 'api/register', data);
         if(res.data.success) {
             dispatch({
                 type: AUTH_REGISTER,
@@ -45,7 +35,7 @@ export const AuthRegister = (data: RegisterType) => async (dispatch: Dispatch) =
 
 export const AuthLogin = (data: LoginType) => async (dispatch: Dispatch) => {
     try {
-        const res = (await axios.post('/api/login', data)).data;
+        const res = (await axios.post(url + 'api/login', data)).data;
 
         if(res.success) {
             dispatch({
@@ -73,7 +63,8 @@ export const AuthLogout = () => async (dispatch: Dispatch) => {
     try {
         const auth = store.getState().auth;
         if(auth.success) {
-            const res = await axios.post('/api/logout', auth.user);
+            const res = await axios.post(url + 'api/logout', auth.user);
+            history.replace('/')
 
             if(res.data.success) {
                 dispatch({
@@ -81,7 +72,6 @@ export const AuthLogout = () => async (dispatch: Dispatch) => {
                     payload: {}
                 })
                 localStorage.removeItem('auth');
-                history.replace('/')
             }
         }
     } catch(err) {

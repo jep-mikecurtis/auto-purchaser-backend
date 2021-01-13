@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Models\Auto;
 
 class User extends Authenticatable
 {
@@ -33,4 +34,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    protected $with = [
+        'autos'
+    ];
+
+    public function autos()
+    {
+         return $this->hasMany(Auto::class, 'email', 'email');
+    }
 }

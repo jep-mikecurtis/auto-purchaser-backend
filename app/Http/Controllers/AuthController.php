@@ -28,6 +28,8 @@ class AuthController extends Controller
         $data['password'] = Hash::make($data['password']);
         $data['api_token'] = Str::random(60);
         $user = User::create($data);
+        $user['autos'] = $user->autos;
+
         return ['success' => true, 'data' => $user];
     }
 
@@ -60,7 +62,7 @@ class AuthController extends Controller
         $user = User::where('email', $request->email)->first();
 
         if (!$user) {
-            return ['success' => false];
+            return ['success' => true];
         }
 
         $user->update(['api_token' => null]);
