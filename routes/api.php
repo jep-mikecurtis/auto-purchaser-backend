@@ -26,4 +26,5 @@ Route::post('/logout', [AuthController::class, 'logout']);
 
 // Auto Routes
 Route::post('/auto', [AutoController::class, 'create']);
+Route::post('/auto/get', [AutoController::class, 'index']);
 
