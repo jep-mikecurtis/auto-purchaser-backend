@@ -66,10 +66,10 @@ const Register = () => {
                         <div className="text-center">
                             <p>{auto.message ?? ''}</p> 
                         </div>
-                        <Input type="text" name="name" label="Name" value={name} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)}/>
-                        <Input type="email" name="email" label="Email" value={email} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}/>
-                        <Input type="password" name="password" label="Password" onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}/>
-                        <Input type="password" name="password_confirm" label="Confirm Password" onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPasswordConfirm(e.target.value)}/>
+                        <Input type="text" name="name" label="Name" value={name} cb={(e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)}/>
+                        <Input type="email" name="email" label="Email" value={email} cb={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}/>
+                        <Input type="password" name="password" label="Password" cb={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}/>
+                        <Input type="password" name="password_confirm" label="Confirm Password" cb={(e: React.ChangeEvent<HTMLInputElement>) => setPasswordConfirm(e.target.value)}/>
                         <div>
                             <SubmitBtn label="Submit" cb={handleSubmit}/>
                         </div>

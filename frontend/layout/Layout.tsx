@@ -5,8 +5,19 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { AuthLogout } from "../redux/actions/AuthActions";
 
+type LoginState = {
+  auth: {}
+  success: boolean
+}
+
+type AUTHTYPE = {
+  auth: {
+    success: boolean
+  }
+}
+
 const Layout: React.FC = ({ children }) => {
-  const auth = useSelector((state: any) => state.auth);
+  const auth = useSelector((state: AUTHTYPE) => state.auth);
   const dispatch = useDispatch();
 
   const logout = () => {

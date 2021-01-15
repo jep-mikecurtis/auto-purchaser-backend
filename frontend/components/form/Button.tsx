@@ -2,7 +2,7 @@ import React from 'react'
 
 type ButtonType = {
     label: string,
-    cb: any
+    cb: () => void
 }
 
 export const SubmitBtn = ({label, cb}: ButtonType) => {

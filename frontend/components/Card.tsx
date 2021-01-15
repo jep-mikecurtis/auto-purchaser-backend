@@ -2,7 +2,11 @@ import React from 'react'
 
 type CardProps = {
     header: string
-    children: any
+    children:
+    | JSX.Element
+    | JSX.Element[]
+    | string
+    | string[];
 }
 
 const Card: React.FunctionComponent<CardProps> = ({header, children}: CardProps) => {

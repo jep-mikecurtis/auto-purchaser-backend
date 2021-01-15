@@ -67,18 +67,18 @@ const Home = () => {
               step === 1 &&
               <div className="my-4 text-sm font-medium flex flex-col space-y-4">
                   <InputMoney type="money" name="purchase_price" label="Auto Purchase Price" text_light={true}
-                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPurchasePrice(e.target.value)} />
+                      cb={(e: React.ChangeEvent<HTMLInputElement>) => setPurchasePrice(e.target.value)} />
                   <div className="flex space-x-2">
                     <Input type="text" name="auto_make" label="Make" text_light={true}
-                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => setAutoMake(e.target.value)} />
+                      cb={(e: React.ChangeEvent<HTMLInputElement>) => setAutoMake(e.target.value)} />
                     <Input type="text" name="auto_model" label="Model" text_light={true}
-                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => setAutoModel(e.target.value)} />
+                      cb={(e: React.ChangeEvent<HTMLInputElement>) => setAutoModel(e.target.value)} />
                   </div>
                   <InputMoney type="text" name="yearly_income" label="Estimated Yearly Income" text_light={true}
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setYearlyIncome(e.target.value)} />
+                    cb={(e: React.ChangeEvent<HTMLInputElement>) => setYearlyIncome(e.target.value)} />
                   <InputNumber type="number" name="credit_score" label="Estimated Credit Score" text_light={true}
                     minNumber={0} maxNumber={850}
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setCreditScore(Number(e.target.value))}/>
+                    cb={(e: React.ChangeEvent<HTMLInputElement>) => setCreditScore(Number(e.target.value))}/>
                   <div className="flex justify-end pt-2">
                     {/* Check If The Button Should Be Disabled */}
                     {disableNext ?
@@ -95,9 +95,9 @@ const Home = () => {
               step === 2 &&
               <div className="my-4 text-sm font-medium flex flex-col space-y-4">
                   <Input type="text" name="name" label="Name" text_light={true}
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)}/>
+                    cb={(e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)}/>
                   <Input type="text" name="email" label="Email" text_light={true}
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}/>
+                    cb={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}/>
                   <div className="flex flex-col space-y-6 pt-2">
                     {disableSubmit ? 
                       <button className="w-full border border-white text-white py-1 px-4 rounded-sm"

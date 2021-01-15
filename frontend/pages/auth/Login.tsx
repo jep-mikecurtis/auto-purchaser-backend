@@ -51,8 +51,8 @@ const Login = () => {
 
                     {/* FORM */}
                     <div className="flex flex-col space-y-4">
-                        <Input type="email" name="email" label="Email" onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}/>
-                        <Input type="password" name="password" label="Password" onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}/>
+                        <Input type="email" name="email" label="Email" cb={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}/>
+                        <Input type="password" name="password" label="Password" cb={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}/>
                         <div>
                             <SubmitBtn label="Submit" cb={handleSubmit}/>
                         </div>

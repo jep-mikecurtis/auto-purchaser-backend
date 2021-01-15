@@ -4,7 +4,7 @@ import {AUTH_REGISTER, AUTH_REGISTER_FAIL, AUTH_LOGOUT, AUTH_LOGIN, RegisterType
 import {history} from '../../store';
 import store from '../../store';
 import {SERVER_ERROR} from './ServerActionsTypes';
-const url = ''
+const url = process.env.REACT_APP_URL;
 
 
 export const AuthRegister = (data: RegisterType) => async (dispatch: Dispatch) => {
@@ -64,14 +64,14 @@ export const AuthLogout = () => async (dispatch: Dispatch) => {
         const auth = store.getState().auth;
         if(auth.success) {
             const res = await axios.post(url + 'api/logout', auth.user);
+            localStorage.removeItem('auth');
             history.replace('/')
 
             if(res.data.success) {
                 dispatch({
                     type: AUTH_LOGOUT,
                     payload: {}
-                })
-                localStorage.removeItem('auth');
+                })   
             }
         }
     } catch(err) {

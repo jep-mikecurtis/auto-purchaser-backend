@@ -5,7 +5,7 @@ type InputProps = {
     type: string
     name: string
     label: string
-    onChange: any
+    cb: any
     text_light?: boolean
     minNumber?: number
     maxNumber?: number
@@ -14,20 +14,20 @@ type InputProps = {
 
 // Regular Input 
 // Good For Text / Dates
-export const Input = ({type, name, label, onChange, text_light, value}: InputProps) => {
+export const Input = ({type, name, label, cb, value}: InputProps) => {
     return (
         <div className="flex-1 flex flex-col space-y-2">
             <label htmlFor={name} className="text-gray-100">{label}</label>
             <input type={type} name={name}
                 value={value}
                 className="w-full bg-gray-300 border border-gray-800 rounded shadow-sm text-gray-800 py-1 pl-2"
-                onChange={onChange}/>
+                onChange={cb}/>
         </div>
     )
 }
 
 // Input Used For Numbers
-export const InputNumber = ({name, label, onChange, text_light, minNumber, maxNumber}: InputProps) => {
+export const InputNumber = ({name, label, cb, text_light, minNumber, maxNumber}: InputProps) => {
     const textClass = text_light ? 'text-gray-100' : 'text-gray-800';
 
     // Check the value of the input
@@ -52,20 +52,20 @@ export const InputNumber = ({name, label, onChange, text_light, minNumber, maxNu
                 max={maxNumber}
                 format={checkValue}
                 className="w-full bg-gray-300 border border-gray-800 rounded shadow-sm text-gray-800 py-1 pl-2"
-                onChange={onChange}/>
+                onChange={cb}/>
         </div>
     )
 }
 
 // Money Format Input
-export const InputMoney = ({type, name, label, onChange, text_light}: InputProps) => {
+export const InputMoney = ({type, name, label, cb, text_light}: InputProps) => {
     const textClass = text_light ? 'text-gray-100' : 'text-gray-800';
     return (
         <div className="flex-1 flex flex-col space-y-2">
             <label htmlFor={name} className={textClass}>{label}</label>
             <NumberFormat thousandSeparator={true} prefix={'$'}
                 name={name} className="w-full bg-gray-300 border border-gray-800 rounded shadow-sm text-gray-800 py-1 pl-2"
-            onChange={onChange}/>
+            onChange={cb}/>
         </div>
 
     )
