@@ -11,7 +11,7 @@ class AutoController extends Controller
 {
     public function index(Request $request)
     {
-        $user = User::where('email', $request->email);
+        $user = User::where('email', $request->email)->first();
         return ['success' => true, 'data' => $user->autos];
     }
 

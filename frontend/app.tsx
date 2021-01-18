@@ -9,5 +9,5 @@ ReactDOM.render(
         <RouterComponent />
     </Provider>
     ,
-    document.getElementById("root")
+    document.getElementById("app")
 );
