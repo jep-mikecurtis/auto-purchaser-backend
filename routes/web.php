@@ -12,5 +12,5 @@
 */
 
 
-Route::view('/{all?}', 'app')
+Route::view('/{all?}', 'index')
     ->where(['all' => '.*']);
